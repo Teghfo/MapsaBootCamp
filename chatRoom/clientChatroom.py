@@ -4,7 +4,7 @@ import sys
 import threading
 
 IP = '192.168.0.114'
-PORT = 8201
+PORT = 1000
 username = input("Enter your name: ")
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((IP, PORT))
