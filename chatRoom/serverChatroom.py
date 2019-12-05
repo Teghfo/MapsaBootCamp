@@ -3,13 +3,14 @@ import time
 import select
 
 IP = ''
-PORT = 8210
+PORT = 8216
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server_socket.bind((IP, PORT))
 
 server_socket.listen(10)
+print("server up!")
 
 socket_list = [server_socket]
 
@@ -29,19 +30,23 @@ while True:
                 user = address[0]
                 clients[client_socket] = user
                 print("Connection Established from {}".format(address))
+                for client_sockets in clients:
+                    if client_sockets != client_socket:
+                        client_sockets.send(
+                            bytes("{} joined Group!".format(address), 'utf-8'))
+
         else:
             message = s.recv(1024)
             if not message:
                 socket_list.remove(s)
                 del clients[s]
                 continue
-            print(message.decode('utf-8'))
+          #  print(message.decode('utf-8'))
             for client_socket in clients:
                 if client_socket != s:
-                    fullText = clients[s] + ' says ' + message.decode('utf-8')
-                    client_socket.send(bytes(fullText, 'utf-8'))
+                    client_socket.send(message)
     for s in exception_socket:
         socket_list.remove(s)
         del clients[s]
-    print(socket_list)
+    # print(socket_list)
 # server_socket.close()
