@@ -61,3 +61,6 @@ def f():
 print(myAbstract.__class__)
 print(ABCMeta.__class__)
 # a = myAbstract()
+
+
+print(eval("print(\'salam\')"))
