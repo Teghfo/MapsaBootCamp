@@ -3,7 +3,7 @@ from dbConnection import *
 conn = db_connection("chatRoom.db")
 cursor = conn.cursor()
 
-# cursor.execute("CREATE TABLE IF NOT EXISTS users(pid integer PRIMARY KEY AUTOINCREMENT , name VARCHAR(255), age integer CHECK(age > 15), gender BOOLEAN , country VARCHAR(255))")
+cursor.execute("CREATE TABLE IF NOT EXISTS users(pid integer PRIMARY KEY AUTOINCREMENT , name VARCHAR(255), age integer CHECK(age > 15), gender BOOLEAN , country VARCHAR(255))")
 
 users_list = [('ashkan', 16, True, 'Iran'), ('Benyamin', 22, True, 'Iran'), ('Ghasem', 17,
                                                                              True, 'Iran'), ('Sakineh', 19, False, 'Iran')]
