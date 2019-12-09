@@ -13,7 +13,8 @@ mycol = mydb['Msg']
 
 # mycol.delete_one({"receiver": "arash"})
 
-print(mycol.count({"sender": "ashkan"}))
+# print(mycol.count({"sender": "ashkan"}))
 
+mycol.find({"receiver"})
 for i in mycol.find():
     print(i)
